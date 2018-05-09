@@ -1,4 +1,7 @@
-Clear-Host
+<#
+    This was used to clean the disks on a bunch of windows clients running as Xenserver vms for use with citrix.
+    This doesn't reclaim any hypervisor space, but might prevent the individual VMs from growing their disks further.
+#>
 $Computer=Read-Host -Prompt "Which computer?"
 $RootPath='\\'+$Computer+'\c$\'
 $initialFreeSpace=(Get-WmiObject Win32_LogicalDisk -ComputerName $Computer | Select Name,Size,FreeSpace |Where-Object {$_.Name -eq 'C:'}|Select-Object -Property FreeSpace).FreeSpace
