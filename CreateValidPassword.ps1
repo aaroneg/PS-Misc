@@ -14,7 +14,10 @@ Function New-UserPassword {
 		[Parameter(Mandatory=$False)][int16]$MinimumFriendlyCharacters=7
 	)
 	
-	if ($MinimumFriendlyCharacters -ge $Length) {Write-Warning '$MinimumFriendlyCharacters cannot be greater than the total number of characters.'; throw [System.InvalidOperationException] "Bad arguments" }
+	if ($MinimumFriendlyCharacters -ge $Length) {
+		Write-Warning '$MinimumFriendlyCharacters cannot be greater than the total number of characters.'
+		throw [System.InvalidOperationException] "Bad arguments" 
+	}
 	
 	While ($PassCandidate.length -lt $Length) {
 		try {$PassCandidate+=New-PasswordChar -errorAction SilentlyContinue }
