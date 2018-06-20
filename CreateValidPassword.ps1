@@ -1,6 +1,6 @@
 Function New-PasswordChar () {
 	[CmdletBinding()]
-	$BannedChars=("o","O","0","1","l","i","{","}",'[',']',"\","|","'",'"','<','>','/','`','(',')',',',';',':')
+	$BannedChars=('o','O','0','1','l','i','{','}','[',']','\','|',"'",'"','<','>','/','`','(',')',',',';',':')
 	# http://www.asciitable.com/
 	$PasswordChar=(-join (38..125 | ForEach-Object {[char]$_} | Get-Random -Count 1))
 	if ($PasswordChar -in $BannedChars) {throw "invalid char"}
