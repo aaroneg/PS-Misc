@@ -51,8 +51,11 @@ Function New-UserPassword {
 	}
 }
 
+#Example
+<#
 while (!($Newpassword)) {
   try {$Newpassword=New-UserPassword}
   catch {}
+  $Newpassword
 }
-$Newpassword
+#>
